@@ -7,13 +7,15 @@ import (
 
 func main() {
 	i := 13
-	var f float64 = 12.9 // Объявляем переменную целого типа 'i' и присваиваем ей значение 55
-	// Объявляем переменную с плавающей запятой 'f' и присваиваем значение 12.9
-	fmt.Println("value i :%d,value f:%f\n", i, f) // Попытка форматированного вывода (ошибка)
-	//fmt.Println("%d*%f=%f/n", i, f, i*f)
-	//fmt.Println("%d*%f=%f/n", i, f, float64(i)*f) // Приводим i к типу float64 для корректного умножения с f
-	fmt.Println("%d*%f=%d/n", i, f, 1*int(f))
-	fmt.Println(reflect.TypeOf(i), (reflect.TypeOf(f)))
-}
+	var f float64 = 12.9 // Объявляем переменную с плавающей запятой 'f' и присваиваем значение 12.9
+	c1 := 'z'
+	c2 := "kim" //44688
+	// Корректный форматированный вывод с помощью fmt.Printf
+	fmt.Printf("value i: %d, value f: %f\n", i, f)
 
-// Определяем и выводим тип переменной 'f' (ожидается float64)
+	// Приведение типа 'f' к int для умножения и корректный вывод
+	fmt.Printf("%d * %f = %d\n", i, f, 1*int(f))
+	fmt.Println(c1, c2)
+	// Вывод типа переменных
+	fmt.Println(reflect.TypeOf(i), reflect.TypeOf(f), reflect.TypeOf(c1), reflect.TypeOf(c2)) // Выводим тип переменных 'i' и 'f'
+}
