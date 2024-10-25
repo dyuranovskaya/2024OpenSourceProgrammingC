@@ -42,7 +42,7 @@ func main() {
 	answer := rand.Intn(6) + 1
 	fmt.Println(answer)
 	for guesses := 0; guesses < 3; guesses++ {
-		fmt.Println("점수 임력:")
+		fmt.Println("d%번의 기회가 남았습니다. 숫자 입력:", 3-guesses)
 		in := bufio.NewReader(os.Stdin)
 		i, err := in.ReadString('\n')
 		if err != nil {
