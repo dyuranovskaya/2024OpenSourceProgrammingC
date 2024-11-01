@@ -191,7 +191,7 @@ func main() {
 	if n <= 1 {
 		isPrime = false
 	} else {
-		j := 2
+		j := 3
 		for j <= int(math.Sqrt(float64(n))) {
 			if n%j == 0 {
 				isPrime = false
@@ -199,7 +199,7 @@ func main() {
 			}
 
 			fmt.Printf("%d ", j)
-			j++
+			j = j + 2
 		}
 	}
 
