@@ -93,14 +93,50 @@ import (
 	"strings"
 )
 
+// func main() {
+// 	// Чтение ввода
+// 	in := bufio.NewReader(os.Stdin)
+// 	fmt.Println("Введите число:")
+
+// 	input, err := in.ReadString('\n')
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+
+// 	// Убираем лишние пробелы и символ новой строки
+// 	input = strings.TrimSpace(input)
+
+// 	// Конвертируем строку в целое число
+// 	n, err := strconv.Atoi(input)
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+
+// 	// Проверка на простое число
+// 	isPrime := true
+// 	for j := 2; j < n; j++ {
+// 		if n%j == 0 {
+// 			isPrime = false
+// 			break
+// 		}
+// 	}
+
+// 	// Вывод результата
+// 	if isPrime && n > 1 {
+// 		fmt.Printf("%d is a prime number.\n", n)
+// 	} else {
+// 		fmt.Printf("%d is NOT a prime number.\n", n)
+// 	}
+// }
+
 func main() {
-	// Чтение ввода
+	// Чтение ввода от пользователя
 	in := bufio.NewReader(os.Stdin)
 	fmt.Println("Введите число:")
 
 	input, err := in.ReadString('\n')
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal(err) // Завершить программу при ошибке
 	}
 
 	// Убираем лишние пробелы и символ новой строки
@@ -109,12 +145,12 @@ func main() {
 	// Конвертируем строку в целое число
 	n, err := strconv.Atoi(input)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal(err) // Завершить программу при ошибке
 	}
 
 	// Проверка на простое число
 	isPrime := true
-	for j := 2; j < n; j++ {
+	for j := 2; j*j <= n; j++ {
 		if n%j == 0 {
 			isPrime = false
 			break
