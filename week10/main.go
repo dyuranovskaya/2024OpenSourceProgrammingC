@@ -1,0 +1,84 @@
+// package main
+
+// import (
+// 	"fmt"
+// 	"log" //fmt — для вывода текста.
+// 	//log — для отображения ошибок.
+// )
+
+// //Создаём функцию paintNeeded, которая принимает ширину и высоту и возвращает количество краски (число) и ошибку (если она есть).
+// func paintNeeded(width float64, height float64) (float64, error) {
+// //Если ширина меньше 0, возвращаем 0 и сообщение об ошибке с неверной шириной.
+// 	if width < 0 {
+// 		return 0, fmt.Errorf("a width of %0.2f is invalid", width)
+// 	}
+// 	if height < 0 {
+// 		return 0, fmt.Errorf("a height of %0.2f is invalid", height)
+// 	}
+// 	//Если высота меньше 0, возвращаем 0 и сообщение об ошибке с неверной высотой.
+// 	area := width * height
+// 	return area / 10.0, nil //Вычисляем площадь, умножив ширину на высоту.
+// }
+
+// //Возвращаем количество краски (площадь делим на 10) и nil (нет ошибки).
+//
+//	func main() {
+//		amount, err := paintNeeded(5.2, 3.5) //Запускаем paintNeeded с шириной 5.2 и высотой 3.5, и сохраняем результат в amount и ошибку в err.
+//		if err != nil {
+//			log.Fatal(err) //сли есть ошибка, программа остановится и покажет сообщение об ошибке.
+//		}
+//		fmt.Printf("%0.2f liters needed\n", amount)
+//		amount, err = paintNeeded(4.2, -3.0)
+//		if err != nil {
+//			log.Fatal(err)
+//		}
+//		fmt.Printf("%0.2f liters needed\n", amount)
+//	}
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"log"
+	"os"
+	"strconv"
+	"strings"
+)
+
+func main() {
+	// Создаём новый `Reader` для чтения ввода от пользователя
+	in := bufio.NewReader(os.Stdin)
+	fmt.Println("점수 입력:") // Сообщение для пользователя
+
+	// Читаем строку ввода
+	input, err := in.ReadString('\n')
+	if err != nil {
+		log.Fatal(err) // Завершаем программу, если произошла ошибка ввода
+	}
+
+	// Убираем пробелы и символ новой строки
+	input = strings.TrimSpace(input)
+
+	// Конвертируем строку в целое число
+	n, err := strconv.Atoi(input)
+	if err != nil {
+		log.Fatal(err) // Завершаем программу, если произошла ошибка конвертации
+	}
+
+	// Считаем количество делителей числа `n`
+	counts := 0
+	j := 1
+	for j <= n {
+		if n%j == 0 {
+			counts++
+		}
+		j++
+	}
+
+	// Проверяем, является ли `n` простым числом
+	if counts == 2 {
+		fmt.Printf("%d is a prime number\n", n)
+	} else {
+		fmt.Printf("%d is not a prime number\n", n)
+	}
+}
