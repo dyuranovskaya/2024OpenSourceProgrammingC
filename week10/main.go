@@ -129,38 +129,71 @@ import (
 // 	}
 // }
 
+// func main() {
+// 	// Чтение ввода от пользователя
+// 	in := bufio.NewReader(os.Stdin)
+// 	fmt.Println("Введите число:")
+
+// 	input, err := in.ReadString('\n')
+// 	if err != nil {
+// 		log.Fatal(err) // Завершить программу при ошибке
+// 	}
+
+// 	// Убираем лишние пробелы и символ новой строки
+// 	input = strings.TrimSpace(input)
+
+// 	// Конвертируем строку в целое число
+// 	n, err := strconv.Atoi(input)
+// 	if err != nil {
+// 		log.Fatal(err) // Завершить программу при ошибке
+// 	}
+
+// 	// Проверка на простое число
+// 	isPrime := true
+// 	for j := 2; j*j <= n; j++ {
+// 		if n%j == 0 {
+// 			isPrime = false
+// 			break
+// 		}
+// 	}
+
+// 	// Вывод результата
+// 	if isPrime && n > 1 {
+// 		fmt.Printf("%d is a prime number.\n", n)
+// 	} else {
+// 		fmt.Printf("%d is NOT a prime number.\n", n)
+// 	}
+// }
+
 func main() {
-	// Чтение ввода от пользователя
 	in := bufio.NewReader(os.Stdin)
-	fmt.Println("Введите число:")
-
-	input, err := in.ReadString('\n')
+	fmt.Println("Input number:")
+	i, err := in.ReadString('\n')
 	if err != nil {
-		log.Fatal(err) // Завершить программу при ошибке
+		log.Fatal(err)
 	}
-
-	// Убираем лишние пробелы и символ новой строки
-	input = strings.TrimSpace(input)
-
-	// Конвертируем строку в целое число
-	n, err := strconv.Atoi(input)
+	i = strings.TrimSpace(i)
+	n, err := strconv.Atoi(i)
 	if err != nil {
-		log.Fatal(err) // Завершить программу при ошибке
+		log.Fatal(err)
 	}
+	var isPrime bool = true
 
-	// Проверка на простое число
-	isPrime := true
-	for j := 2; j*j <= n; j++ {
-		if n%j == 0 {
-			isPrime = false
-			break
+	if n <= 1 {
+		isPrime = false
+	} else {
+		j := 2
+		for j <= n {
+			if n%j == 0 {
+				isPrime = false
+			}
+			j++
 		}
 	}
 
-	// Вывод результата
-	if isPrime && n > 1 {
-		fmt.Printf("%d is a prime number.\n", n)
+	if isPrime {
+		fmt.Printf("%d is prime number.", n)
 	} else {
-		fmt.Printf("%d is NOT a prime number.\n", n)
+		fmt.Printf("%d is NOT prime number.", n)
 	}
 }
