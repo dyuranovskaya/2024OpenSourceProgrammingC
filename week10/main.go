@@ -88,6 +88,7 @@ import (
 	"bufio"
 	"fmt"
 	"log"
+	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -167,6 +168,7 @@ import (
 
 func main() {
 	in := bufio.NewReader(os.Stdin)
+	// fmt.Printf("%f\n", math.Sqrt(19.0))
 	fmt.Println("Input number:")
 	i, err := in.ReadString('\n')
 	if err != nil {
@@ -183,7 +185,7 @@ func main() {
 		isPrime = false
 	} else {
 		j := 2
-		for j < n {
+		for j <= int(math.Sqrt(float64(n))) {
 			if n%j == 0 {
 				isPrime = false
 				break
