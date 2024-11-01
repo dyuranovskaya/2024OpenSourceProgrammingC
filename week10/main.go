@@ -165,6 +165,35 @@ import (
 // 	}
 // }
 
+func isPrime(n int) bool {
+	//var isPrime bool = true
+	if n <= 1 {
+		return false
+	} else if n == 0 {
+		return true
+	} else if n%2 == 0 {
+		return false
+	}
+
+	if n <= 1 {
+		return false
+	} else {
+		j := 3
+		for j*j <= n {
+			// for j <= int(math.Sqrt(float64(n))) {
+			if n%j == 0 {
+				// isPrime = false
+				// break
+				return false
+			}
+
+			fmt.Printf("%d ", j)
+			j = j + 2
+		}
+	}
+	return true
+}
+
 func main() {
 	in := bufio.NewReader(os.Stdin)
 	// fmt.Printf("%f\n", math.Sqrt(19.0))
@@ -178,32 +207,8 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var isPrime bool = true
-	if n <= 1 {
-		isPrime = false
-	} else if n == 0 {
-		isPrime = true
-	} else if n%2 == 0 {
-		isPrime = false
-	}
 
-	if n <= 1 {
-		isPrime = false
-	} else {
-		j := 3
-		for j*j <= n {
-			// for j <= int(math.Sqrt(float64(n))) {
-			if n%j == 0 {
-				isPrime = false
-				break
-			}
-
-			fmt.Printf("%d ", j)
-			j = j + 2
-		}
-	}
-
-	if isPrime {
+	if isPrime(n) {
 		fmt.Printf("%d is prime number.", n)
 	} else {
 		fmt.Printf("%d is NOT prime number.", n)
