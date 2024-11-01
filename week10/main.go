@@ -180,6 +180,13 @@ func main() {
 		log.Fatal(err)
 	}
 	var isPrime bool = true
+	if n <= 1 {
+		isPrime = false
+	} else if n == 0 {
+		isPrime = true
+	} else if n%2 == 0 {
+		isPrime = false
+	}
 
 	if n <= 1 {
 		isPrime = false
