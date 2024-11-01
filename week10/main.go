@@ -34,6 +34,54 @@
 //		}
 //		fmt.Printf("%0.2f liters needed\n", amount)
 //	}
+// package main
+
+// import (
+// 	"bufio"
+// 	"fmt"
+// 	"log"
+// 	"os"
+// 	"strconv"
+// 	"strings"
+// )
+
+// func main() {
+// 	// Создаём новый `Reader` для чтения ввода от пользователя
+// 	in := bufio.NewReader(os.Stdin)
+// 	fmt.Println("점수 입력:") // Сообщение для пользователя
+
+// 	// Читаем строку ввода
+// 	input, err := in.ReadString('\n')
+// 	if err != nil {
+// 		log.Fatal(err) // Завершаем программу, если произошла ошибка ввода
+// 	}
+
+// 	// Убираем пробелы и символ новой строки
+// 	input = strings.TrimSpace(input)
+
+// 	// Конвертируем строку в целое число
+// 	n, err := strconv.Atoi(input)
+// 	if err != nil {
+// 		log.Fatal(err) // Завершаем программу, если произошла ошибка конвертации
+// 	}
+
+// 	// Считаем количество делителей числа `n`
+// 	counts := 0
+// 	j := 1
+// 	for j <= n {
+// 		if n%j == 0 {
+// 			counts++
+// 		}
+// 		j++
+// 	}
+
+//		// Проверяем, является ли `n` простым числом
+//		if counts == 2 {
+//			fmt.Printf("%d is a prime number\n", n)
+//		} else {
+//			fmt.Printf("%d is not a prime number\n", n)
+//		}
+//	}
 package main
 
 import (
@@ -46,39 +94,37 @@ import (
 )
 
 func main() {
-	// Создаём новый `Reader` для чтения ввода от пользователя
+	// Чтение ввода
 	in := bufio.NewReader(os.Stdin)
-	fmt.Println("점수 입력:") // Сообщение для пользователя
+	fmt.Println("Введите число:")
 
-	// Читаем строку ввода
 	input, err := in.ReadString('\n')
 	if err != nil {
-		log.Fatal(err) // Завершаем программу, если произошла ошибка ввода
+		log.Fatal(err)
 	}
 
-	// Убираем пробелы и символ новой строки
+	// Убираем лишние пробелы и символ новой строки
 	input = strings.TrimSpace(input)
 
 	// Конвертируем строку в целое число
 	n, err := strconv.Atoi(input)
 	if err != nil {
-		log.Fatal(err) // Завершаем программу, если произошла ошибка конвертации
+		log.Fatal(err)
 	}
 
-	// Считаем количество делителей числа `n`
-	counts := 0
-	j := 1
-	for j <= n {
+	// Проверка на простое число
+	isPrime := true
+	for j := 2; j < n; j++ {
 		if n%j == 0 {
-			counts++
+			isPrime = false
+			break
 		}
-		j++
 	}
 
-	// Проверяем, является ли `n` простым числом
-	if counts == 2 {
-		fmt.Printf("%d is a prime number\n", n)
+	// Вывод результата
+	if isPrime && n > 1 {
+		fmt.Printf("%d is a prime number.\n", n)
 	} else {
-		fmt.Printf("%d is not a prime number\n", n)
+		fmt.Printf("%d is NOT a prime number.\n", n)
 	}
 }
