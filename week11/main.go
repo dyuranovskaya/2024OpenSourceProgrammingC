@@ -31,12 +31,12 @@ func isPrime(n int) bool {
 // Функция для считывания целого числа с ввода, возвращает ошибку, если ввод некорректен
 func getInteger() (int, error) {
 	in := bufio.NewReader(os.Stdin)
-	a, err := in.ReadString('\n')
+	a1, err := in.ReadString('\n')
 	if err != nil {
 		return 0, err
 	}
-	a = strings.TrimSpace(a)
-	n, err := strconv.Atoi(a)
+	a1 = strings.TrimSpace(a1)
+	n, err := strconv.Atoi(a1)
 	if err != nil {
 		return 0, err
 	}
