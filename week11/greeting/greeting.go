@@ -9,3 +9,8 @@ func Hi(name string) {
 func Hello(name string) {
 	fmt.Printf("Hello %s~\n", name)
 }
+
+func EnglishGreetings(name string) {
+	Hello(name)
+	Hi(name)
+}
