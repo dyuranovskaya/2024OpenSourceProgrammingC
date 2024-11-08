@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-// Функция для проверки простого числа
+// Функция для проверки, является ли число простым
 func isPrime(n int) bool {
 	if n <= 1 {
 		return false
@@ -29,16 +29,15 @@ func isPrime(n int) bool {
 	return true
 }
 
-// Функция для считывания целого числа
-func getInteger(prompt string) int {
-	fmt.Print(prompt)
+// Функция для считывания целого числа с ввода
+func getInteger() int {
 	in := bufio.NewReader(os.Stdin)
-	a, err := in.ReadString('\n')
+	a, err := in.ReadString('\n') // Чтение строки
 	if err != nil {
 		log.Fatal(err)
 	}
-	a = strings.TrimSpace(a)
-	n, err := strconv.Atoi(a)
+	a = strings.TrimSpace(a)  // Убираем лишние пробелы
+	n, err := strconv.Atoi(a) // Преобразуем строку в число
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -46,15 +45,16 @@ func getInteger(prompt string) int {
 }
 
 func main() {
-	// Ввод начального и конечного числа
-	n1 := getInteger("Input start number: ")
-	n2 := getInteger("Input end number: ")
+	fmt.Print("Введите начальное число: ")
+	n1 := getInteger() // Получаем начальное число
 
-	// Вывод простых чисел в указанном диапазоне
+	fmt.Print("Введите конечное число: ")
+	n2 := getInteger() // Получаем конечное число
+
+	// Печатаем все простые числа в диапазоне от n1 до n2
 	for j := n1; j <= n2; j++ {
 		if isPrime(j) {
 			fmt.Printf("%d ", j)
 		}
 	}
-	fmt.Println()
 }
