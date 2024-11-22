@@ -5,6 +5,10 @@ import (
 )
 
 func main() {
+	var emptySlice []int
+	// emptySlice = make([]bool, 5)
+	fmt.Printf("%#v\n", emptySlice)
+
 	var gpa [5]float64 = [5]float64{3.5, 4.1, 3.9, 4.23}
 	gpa_slice := gpa[1:4]
 	// gpa_slice[1] = 2.71
