@@ -5,9 +5,14 @@ import (
 )
 
 func main() {
-	var emptySlice []int
-	// emptySlice = make([]bool, 5)
-	fmt.Printf("%#v\n", emptySlice)
+	var emptySlice []bool
+	//emptySlice = make([]bool, 5)
+	fmt.Printf("%#v %d\n", emptySlice, len(emptySlice))
+
+	if len(emptySlice) == 0 {
+		emptySlice = append(emptySlice, true)
+	}
+	fmt.Printf("%#v %d\n", emptySlice, len(emptySlice)) //[]bool(true)
 
 	var gpa [5]float64 = [5]float64{3.5, 4.1, 3.9, 4.23}
 	gpa_slice := gpa[1:4]
